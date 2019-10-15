@@ -15,15 +15,19 @@ APP DESIGN
 3. What tables/schema are used? (Acronyms: PK = primary key, AI: auto-increment, FK: foreign key)
 
 User
+
 username (PK, AI) | password | rider_id (FK) | driver_id (FK)
 
 Rider
+
 rider_id (PK, AI) | username (FK) | request_id (FK)
 
 Driver
+
 driver_id (PK, AI) | username (FK) | request_id (FK)
 
 RideRequest
+
 request_id (PK, AI) | rider_id (FK) | request_timestamp | location | driver_id (FK) | accepted_timestamp | completed_timestamp
 
 4. Briefly explain the reasoning behind the schema decision.
