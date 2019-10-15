@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +46,17 @@ public class RequestDetail extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this);
         dataOps = new DataOperations(dbHelper);
 
+        if (requestId < 0) {
+            if (riderId < 0) {
+                requestId = dbHelper.getDriver(driverId).getRequestId();
+            } else {
+                requestId = dbHelper.getRider(riderId).getRequestId();
+            }
+        }
+
+        dbHelper = new DatabaseHelper(this);
+        dataOps = new DataOperations(dbHelper);
+
         tv_request_info = findViewById(R.id.tv_request_info);
         btn_accept = findViewById(R.id.btn_accept);
         btn_accept.setOnClickListener(new View.OnClickListener() {
@@ -66,6 +78,7 @@ public class RequestDetail extends AppCompatActivity {
         } else {
             if (dbHelper.getDriver(driverId).getRequestId() == null) {
                 btn_accept.setVisibility(View.VISIBLE);
+
             } else {
                 btn_accept.setVisibility(View.INVISIBLE);
             }
@@ -89,7 +102,7 @@ public class RequestDetail extends AppCompatActivity {
         content.append("Rider: ").append(dbHelper.getRider(request.getRiderId()).getUsername());
         content.append("\nRequested Datetime: ").append(
                 dataOps.epochToStringConverter(request.getRequestTimestamp()));
-        content.append("\nPickup Location: ").append(dbHelper.getRider(request.getRiderId()).getUsername());
+        content.append("\nPickup Location: ").append(request.getLocation());
 
         Long requestDriverId = request.getDriverId();
         if (requestDriverId != null) {
