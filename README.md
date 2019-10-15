@@ -16,7 +16,7 @@ APP DESIGN
 
 - User
 
-  - username (PK, AI) | password | rider_id (FK) | driver_id (FK)
+  - username (PK) | password | rider_id (FK) | driver_id (FK)
 
 - Rider
 
