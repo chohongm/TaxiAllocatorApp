@@ -101,7 +101,7 @@ POINTS OF IMPROVEMENT
 3. Find better way to send information from one activity to the next.
 4. Discuss about adding redundancy to some tables in order to reduce data reads.
 
-SPECIFIC GUIDE FOR RUNNING THE APP
+SPECIFICS FOR RUNNING THE APP
 
 - Use android studio version >= 3.0
 - Use my build.gradle under app package for any dependencies.
