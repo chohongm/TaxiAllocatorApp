@@ -68,7 +68,7 @@ APP DESIGN
 
 LANGUAGES & TOOLS USED
 
-- Java for both frontend and backend implementation, Android Studio, and SQLite for database (built-in in android studio).
+- Java for both frontend and backend implementation, Android Studio (v3.5.1; Latest released version on 2019-10-16), and SQLite for database (built-in in android studio).
 
 DEMO VIDEO LINK
 
