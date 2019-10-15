@@ -63,3 +63,10 @@ LANGUAGES & TOOLS USED
 DEMO VIDEO LINK
 
 - Pending.
+
+POINTS OF IMPROVEMENT
+
+1. Need to transactionalize multiple write operations to avoid broken data scenarios.
+2. Need to organize code structure better by using more constants.
+3. Find better way to send information from one activity to the next.
+4. Discuss about adding redundancy to some tables in order to reduce data reads.
