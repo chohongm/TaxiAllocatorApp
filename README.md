@@ -58,7 +58,7 @@ APP DESIGN
     - updateRideRequest: Updates a ride request by associating a driver and an accepted timestamp.
 
   - When the app displays a list of all existing ride requests to a user: 
-    - getAllRideRequests: Gets the list of all ride requests sorted by request timestamp in descending order.
+    - getAllRideRequests (This should be moved up to be public): Gets the list of all ride requests sorted by request timestamp in descending order.
 
   - When above APIs need to read data:
     - getUser: Gets a user by userId.
