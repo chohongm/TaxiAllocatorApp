@@ -68,9 +68,29 @@ DEMO VIDEO LINK
 
 - https://youtu.be/UIYCMM6MMtw
 
+FEATURE GOALS (O = Complete; X = Incomplete)
+- Register account:
+  - Parameters are username in email format, password, and rider/driver selection. (O)
+  - An existing email cannot be used for creating a new account. (O)
+- Login:
+  - Use email and password to login. (O)
+- Ride request list view: 
+  - All existing ride requests should be displayed to any user. (O)
+  - A listed ride request can either be in pending or accepted state. (O)
+  - A ride request should display whether it is in pending or accepted state. (O)
+  - A ride request should display both requested and accepted timestamps. (O)
+  - Most recent ride request should be at the top. (O)
+- Ride requesting:
+  - A rider can create a request for a ride. (O)
+  - Creating a request takes locaiton as parameter. (O)
+  - The location should be less than equal to 100 letters in length. (O)
+- Driver accepting:
+  - A driver can accept a pending request. (O)
+  - Driver can accept only one request at the same time. (O & X; There is a minor bug needs to be fixed.)
+
 POINTS OF IMPROVEMENT
 
 1. Need to transactionalize multiple write operations to avoid broken data scenarios.
-2. Need to organize code structure better by using more constants.
+2. Need to organize code structure better by using more constants. 
 3. Find better way to send information from one activity to the next.
 4. Discuss about adding redundancy to some tables in order to reduce data reads.
