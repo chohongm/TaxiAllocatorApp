@@ -2,11 +2,11 @@
 
 APP DESIGN
 
-1. What is this app for?
+1. What is this?
 
-- An android app for allocating drivers to riders.
+- An android app for allocating drivers to ride requesters.
 
-2. How does it work?
+2. What are the core logic/workflow of the app?
 
 - A user can create an account as either rider or driver.
 - A rider can create a ride request (All ride requests are displayed on the list. Both rider and driver can view the list.).
@@ -35,13 +35,13 @@ APP DESIGN
 - Used integer type identity for primary key to reduce database read/write operational cost.
 
 5. What APIs are used and when are they used?
-- Data operations layer APIs:
+- Data operations layer APIs (This is the service level API class):
   - createUserAsRider: Creates user as rider; Inserts user and rider into the respective tables.
   - createUserAsDriver: Creates user as driver; Inserts user and driver into the respective tables.
   - createRideRequest: Creates a new ride request; Inserts a new ride request and updates the rider with the request info.
   - acceptRideRequest: Updates a ride request with the driver and accepted timestamp. Updates the driver with the request info.
 
-- Database layer APIs
+- Database layer APIs (Internal/Not-public)
   - When a user creates an account:
     - insertUserAsRider: Inserts a new user into user table as a rider.
     - insertUserAsDriver: Inserts a new user into user table as a driver.
@@ -68,7 +68,7 @@ APP DESIGN
 
 LANGUAGES & TOOLS USED
 
-- Java for both frontend and backend implementation, Android Studio (v3.5.1; Latest released version on 2019-10-16), and SQLite for database (built-in in android studio).
+- Java for both frontend and backend implementation, Android Studio (v3.5.1; Latest released version on 2019-10-16), and SQLite for database (built-in for android studio).
 
 DEMO VIDEO LINK
 
