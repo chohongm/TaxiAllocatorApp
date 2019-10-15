@@ -48,17 +48,17 @@ APP DESIGN
     - insertRider: Inserts a new rider into rider table.
     - insertDriver: Inserts a new driver into driver table.
 
-  - When a rider creates a ride request: createRideRequest
+  - When a rider creates a ride request:
     - insertRideRequest: Inserts a new ride request into ride request table. 
       (*Note: A new ride request is a request created by a rider which has yet been accepted by a driver.)
     - updateRider: Updates a rider by associating a requestId.
 
-  - When a driver accepts a ride request: acceptRideRequest
+  - When a driver accepts a ride request:
     - updateDriver: Updates a driver by associating a requestId.
     - updateRideRequest: Updates a ride request by associating a driver and an accepted timestamp.
 
   - When the app displays a list of all existing ride requests to a user: 
-    - getAllRideRequests (This should be moved up to be public): Gets the list of all ride requests sorted by request timestamp in descending order.
+    - getAllRideRequests (This should be moved up to data ops layer): Gets the list of all ride requests sorted by request timestamp in descending order.
 
   - When above APIs need to read data:
     - getUser: Gets a user by userId.
@@ -92,7 +92,7 @@ FEATURE GOALS (O = Complete; X = Incomplete)
   - The location should be less than equal to 100 letters in length. (O)
 - Driver accepting:
   - A driver can accept a pending request. (O)
-  - Driver can accept only one request at the same time. (O & X; There is a minor bug needs to be fixed.)
+  - Driver can accept only one request at the same time. (O & X; There is a minor bug that needs to be fixed.)
 
 POINTS OF IMPROVEMENT
 
