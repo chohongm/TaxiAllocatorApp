@@ -35,23 +35,29 @@ APP DESIGN
 - Used integer type identity for primary key to reduce database read/write operational cost.
 
 5. What APIs are used and when are they used?
+- Data operations layer:
+  - createUserAsRider: Creates user as rider; Inserts user and rider into the respective tables.
+  - createUserAsDriver: Creates user as driver; Inserts user and driver into the respective tables.
+  - createRideRequest: Creates a new ride request; Inserts a new ride request and updates the rider with the request info.
+  - acceptRideRequest: Updates a ride request with the driver and accepted timestamp. Updates the driver with the request info.
 
-- When a user creates an account:
-  - insertUserAsRider: Inserts a new user into user table as a rider.
-  - insertUserAsDriver: Inserts a new user into user table as a driver.
-  - insertRider: Inserts a new rider into rider table.
-  - insertDriver: Inserts a new driver into driver table.
+- Database Layer APIs
+  - When a user creates an account:
+    - insertUserAsRider: Inserts a new user into user table as a rider.
+    - insertUserAsDriver: Inserts a new user into user table as a driver.
+    - insertRider: Inserts a new rider into rider table.
+    - insertDriver: Inserts a new driver into driver table.
 
-- When a rider creates a ride request:
+- When a rider creates a ride request: createRideRequest
   - insertRideRequest: Inserts a new ride request into ride request table. 
     (*Note: A new ride request is a request created by a rider which has yet been accepted by a driver.)
   - updateRider: Updates a rider by associating a requestId.
 
-- When a driver accepts a ride request:
+- When a driver accepts a ride request: acceptRideRequest
   - updateDriver: Updates a driver by associating a requestId.
   - updateRideRequest: Updates a ride request by associating a driver and an accepted timestamp.
 
-- When the app displays a list of all existing ride requests to a user.
+- When the app displays a list of all existing ride requests to a user: 
   - getAllRideRequests: Gets the list of all ride requests sorted by request timestamp in descending order.
 
 - When above APIs need to read data:
