@@ -29,16 +29,16 @@ public class TableConstants {
             + "FOREIGN KEY (" + DRIVER_ID + ") REFERENCES " + DRIVER_TABLE + " (" + DRIVER_ID + ")"
             + ")";
 
-    public static final String CREATE_DRIVER_TABLE = "CREATE TABLE " + DRIVER_TABLE + " ("
-            + DRIVER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+    public static final String CREATE_RIDER_TABLE = "CREATE TABLE " + RIDER_TABLE + " ("
+            + RIDER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + USERNAME + " TEXT NOT NULL UNIQUE, "
             + REQUEST_ID + " INTEGER, "
             + "FOREIGN KEY (" + USERNAME + ") REFERENCES " + USER_TABLE + " (" + USERNAME + "), "
             + "FOREIGN KEY (" + REQUEST_ID + ") REFERENCES " + RIDE_REQUEST_TABLE + " (" + REQUEST_ID + ")"
             + ")";
 
-    public static final String CREATE_RIDER_TABLE = "CREATE TABLE " + RIDER_TABLE + " ("
-            + RIDER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+    public static final String CREATE_DRIVER_TABLE = "CREATE TABLE " + DRIVER_TABLE + " ("
+            + DRIVER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + USERNAME + " TEXT NOT NULL UNIQUE, "
             + REQUEST_ID + " INTEGER, "
             + "FOREIGN KEY (" + USERNAME + ") REFERENCES " + USER_TABLE + " (" + USERNAME + "), "

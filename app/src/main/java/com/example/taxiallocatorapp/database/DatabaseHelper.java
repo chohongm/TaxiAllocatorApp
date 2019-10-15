@@ -238,6 +238,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return driver;
     }
 
+    // Loads a ride request matching with given requestId.
     public RideRequest getRideRequest(final long requestId) {
 
         RideRequest request = null;
@@ -272,106 +273,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return request;
-    }
-
-    public RideRequest getRideRequestByRider(final long riderId) {
-
-        RideRequest request = null;
-
-        String selectQuery = "SELECT  * FROM " + RIDE_REQUEST_TABLE + " WHERE "
-                + RIDER_ID + " = " + riderId;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor != null && cursor.moveToFirst()) {
-            // Handle nullable fields.
-            int driverIdIndex = cursor.getColumnIndex(DRIVER_ID);
-            int acceptedTimestampIndex = cursor.getColumnIndex(ACCEPTED_TIMESTAMP);
-            int completedTimestampIndex = cursor.getColumnIndex(COMPLETED_TIMESTAMP);
-
-            Long driverId = (cursor.isNull(driverIdIndex)) ?
-                    null : cursor.getLong(driverIdIndex);
-            Long acceptedTimestamp = (cursor.isNull(acceptedTimestampIndex)) ?
-                    null : cursor.getLong(acceptedTimestampIndex);
-            Long completedTimestamp = (cursor.isNull(completedTimestampIndex)) ?
-                    null : cursor.getLong(completedTimestampIndex);
-
-            request = new RideRequest(
-                    cursor.getLong(cursor.getColumnIndex(REQUEST_ID)),
-                    riderId,
-                    cursor.getLong(cursor.getColumnIndex(REQUEST_TIMESTAMP)),
-                    cursor.getString(cursor.getColumnIndex(LOCATION)),
-                    driverId, acceptedTimestamp, completedTimestamp);
-
-            cursor.close();
-        }
-
-        return request;
-    }
-
-    public RideRequest getRideRequestByDriver(final long driverId) {
-
-        RideRequest request = null;
-
-        String selectQuery = "SELECT  * FROM " + RIDE_REQUEST_TABLE + " WHERE "
-                + DRIVER_ID + " = " + driverId;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor != null && cursor.moveToFirst()) {
-            // Handle nullable fields.
-            int acceptedTimestampIndex = cursor.getColumnIndex(ACCEPTED_TIMESTAMP);
-            int completedTimestampIndex = cursor.getColumnIndex(COMPLETED_TIMESTAMP);
-
-            Long acceptedTimestamp = (cursor.isNull(acceptedTimestampIndex)) ?
-                    null : cursor.getLong(acceptedTimestampIndex);
-            Long completedTimestamp = (cursor.isNull(completedTimestampIndex)) ?
-                    null : cursor.getLong(completedTimestampIndex);
-
-            request = new RideRequest(
-                    cursor.getLong(cursor.getColumnIndex(REQUEST_ID)),
-                    cursor.getLong(cursor.getColumnIndex(RIDER_ID)),
-                    cursor.getLong(cursor.getColumnIndex(REQUEST_TIMESTAMP)),
-                    cursor.getString(cursor.getColumnIndex(LOCATION)),
-                    driverId, acceptedTimestamp, completedTimestamp);
-
-            cursor.close();
-        }
-
-        return request;
-    }
-
-    // Gets all user data from user table in alphabetical order.
-    public List<User> getAllUsers() {
-
-        List<User> users = new ArrayList<>();
-
-        String selectQuery = "SELECT  * FROM " + USER_TABLE + " ORDER BY " +
-                USERNAME;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                // Handle nullable fields.
-                int riderIdIndex = cursor.getColumnIndex(RIDER_ID);
-                int driverIdIndex = cursor.getColumnIndex(DRIVER_ID);
-                Long riderId = (cursor.isNull(riderIdIndex)) ? null : cursor.getLong(riderIdIndex);
-                Long driverId = (cursor.isNull(driverIdIndex)) ? null : cursor.getLong(driverIdIndex);
-                User user = new User(
-                        cursor.getString(cursor.getColumnIndex(USERNAME)),
-                        cursor.getString(cursor.getColumnIndex(PASSWORD)),
-                        riderId, driverId);
-                users.add(user);
-
-            } while (cursor.moveToNext());
-        }
-        db.close();
-
-        return users;
     }
 
     // Gets the list of all ride requests sorted by request timestamp in descending order.
